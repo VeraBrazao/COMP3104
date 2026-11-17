@@ -1,6 +1,7 @@
 {
   "name": "comp3104",
   "version": "1.0.0",
+   "homepage": "https://verabrazao.github.io/COMP3104/",
   "description": "",
   "main": "index.js",
   "scripts": {
