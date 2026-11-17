@@ -1,0 +1,36 @@
+name: COMP3104 CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify README file
+        run: |
+          echo "Checking COMP3104 repository"
+          test -f README.md
+          echo "README.md exists - CI check passed"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name:  Run tests
+        run: npm test
+
+      - name: Verify build directory
+        run: test -f build/index.html
